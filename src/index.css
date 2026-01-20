@@ -59,11 +59,11 @@ html, body {
 /* Masonry layout styles for react-masonry-css */
 .my-masonry-grid {
   display: flex;
-  margin-left: -0.5rem; /* gutter size offset */
+  margin-left: -1.75rem; /* gutter size offset */
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 0.5rem; /* gutter size */
+  padding-left: 1.75rem; /* gutter size */
   background-clip: padding-box;
 }
 .my-masonry-grid_column > div {
@@ -284,6 +284,59 @@ html, body {
   border-bottom-right-radius: 0;
   transform: rotate(-20deg);
 }
+
+/* Highlight text style for intro page */
+.highlight-text {
+  font-style: italic;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 4px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  transition: text-shadow 0.3s ease;
+  margin: 0;
+}
+
+/* Editorial New font specific styling - tighter spacing and bolder */
+.editorial-text {
+  letter-spacing: -0.05em;
+  -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.5);
+  text-stroke: 0.3px rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+}
+
+/* Glow effect for highlighted text on hover - text itself glows */
+.highlight-text:hover {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Glow effect for editorial text on hover */
+.editorial-text:hover {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+/* Glow effect for arrow icons - glows with text on hover */
+.arrow-glow {
+  transition: filter 0.3s ease;
+}
+
+.editorial-text:hover .arrow-glow {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.4));
+}
+
 
 @media (max-width: 640px) {
   .beams-container {

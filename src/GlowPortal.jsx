@@ -37,10 +37,9 @@ export default function GlowPortal({ src, left, top, width, height, show, opacit
         width,
         height,
         pointerEvents: show ? 'auto' : 'none',
-        opacity: show ? Math.min(opacity * 1.5, 1) : 0, // Increase opacity
-        filter: 'blur(60px) brightness(1.5)', // Brighter and less diffused
-        borderRadius: '50%',
-        transition: 'opacity 0.4s ease-in-out, left 0.2s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease',
+        opacity: show ? Math.min(opacity * 1.0, 0.7) : 0, // Dimmer opacity
+        filter: 'blur(25px) brightness(1.2)', // More spread glow
+        transition: 'opacity 0.2s ease-in-out',
       }}
     />,
     portalRoot

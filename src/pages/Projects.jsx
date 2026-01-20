@@ -107,7 +107,7 @@ function Projects() {
   };
 
   return (
-    <div className="relative min-h-screen text-white bg-[#0C0C0C]">
+    <div className="relative min-h-screen text-white bg-black">
       <GlowPortal
         src={glowPortal.src}
         left={glowPortal.left}
@@ -116,14 +116,15 @@ function Projects() {
         height={glowPortal.height}
         show={glowPortal.show}
         opacity={glowPortal.opacity}
+        zIndex={1}
       />
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 relative z-20">
         {/* Projects Content */}
         <main className="min-h-[60vh] py-16">
           <div className="max-w-5xl mx-auto">
             <div className="mb-12 text-left">
               <h1
-                className="text-lg md:text-xl mb-1 text-white italic"
+                className="text-lg md:text-xl mb-1 text-white italic fade-in"
                 style={{
                   fontFamily: 'Editorial New',
                   letterSpacing: '-0.05em',
@@ -133,7 +134,7 @@ function Projects() {
                 Projects
               </h1>
               <p
-                className="text-xs md:text-sm text-white"
+                className="text-xs md:text-sm text-white fade-in fade-in-delay-1"
                 style={{
                   fontFamily: 'Neue Montreal',
                   fontWeight: 300,
@@ -144,10 +145,13 @@ function Projects() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {projects.map((project, index) => (
+            {projects.map((project, index) => {
+              const delayMap = ['fade-in-delay-2', 'fade-in-delay-3', 'fade-in-delay-4', 'fade-in-delay-5', 'fade-in-delay-5', 'fade-in-delay-5'];
+              const delayClass = delayMap[Math.min(index, delayMap.length - 1)];
+              return (
               <div
                 key={index}
-                className="w-full cursor-pointer overflow-visible"
+                className={`w-full cursor-pointer overflow-visible fade-in ${delayClass}`}
                 onMouseEnter={!isTouchDevice ? handleShowGlow : undefined}
                 onMouseLeave={!isTouchDevice ? handleHideGlow : undefined}
               >
@@ -204,18 +208,18 @@ function Projects() {
                   ))}
                 </div>
               </div>
-            ))}
+            )})}
           </div>
           </div>
         </main>
 
         {/* Footer */}
         <footer
-          className="border-t border-[#333] mt-16 pt-6 pb-10 text-sm md:text-base bg-[#0C0C0C]"
+          className="border-t border-[#333] mt-16 pt-6 pb-10 text-sm md:text-base bg-black fade-in fade-in-delay-5"
           style={{ color: '#4E4E4E', fontFamily: 'Neue Montreal', fontWeight: 300 }}
         >
           <div className="flex flex-row justify-between items-center w-full">
-            <img src={footerlogo} alt="Footer Logo" className="w-8 h-auto object-contain" />
+            <img src={footerlogo} alt="Footer Logo" className="w-6 h-auto object-contain" />
             <span>© 2025</span>
           </div>
         </footer>

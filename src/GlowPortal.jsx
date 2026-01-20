@@ -36,6 +36,7 @@ export default function GlowPortal({ src, left, top, width, height, show, opacit
         top,
         width,
         height,
+        zIndex,
         pointerEvents: show ? 'auto' : 'none',
         opacity: show ? Math.min(opacity * 1.0, 0.7) : 0, // Dimmer opacity
         filter: 'blur(25px) brightness(1.2)', // More spread glow

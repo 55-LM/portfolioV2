@@ -59,7 +59,7 @@ export default function Gallery() {
 
   return (
     <>
-      <div className="overflow-visible pb-20 sm:pb-12 w-full max-w-full" style={{ overflow: 'visible' }}>
+      <div className="overflow-visible pb-20 sm:pb-12 w-full max-w-full relative z-20" style={{ overflow: 'visible' }}>
         <Masonry
           breakpointCols={{
             default: 4,
@@ -170,10 +170,13 @@ export default function Gallery() {
             };
             const handleHideGlow = () => setGlowPortal((g) => ({ ...g, show: false }));
 
+            const delayMap = ['fade-in-delay-2', 'fade-in-delay-2', 'fade-in-delay-3', 'fade-in-delay-3', 'fade-in-delay-4', 'fade-in-delay-4', 'fade-in-delay-5', 'fade-in-delay-5'];
+            const delayClass = delayMap[i % delayMap.length] || 'fade-in-delay-5';
+            
             return (
               <div
                 key={i}
-                className="inline-block w-full mb-6 break-inside-avoid group cursor-pointer overflow-visible"
+                className={`inline-block w-full mb-6 break-inside-avoid group cursor-pointer overflow-visible fade-in ${delayClass}`}
                 onMouseEnter={!isTouchDevice ? handleShowGlow : undefined}
                 onMouseLeave={!isTouchDevice ? handleHideGlow : undefined}
                 onTouchStart={isTouchDevice ? (e) => { handleShowGlow(e); handleClick(e); } : undefined}
@@ -221,7 +224,7 @@ export default function Gallery() {
         </div>
       )}
 
-      <GlowPortal {...glowPortal} zIndex={2} />
+      <GlowPortal {...glowPortal} zIndex={1} />
     </>
   );
 }

@@ -18,13 +18,13 @@ function Photos() {
   }, []);
 
   return (
-    <div className="relative min-h-screen text-white bg-[#0C0C0C]">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
+    <div className="relative min-h-screen text-white bg-black">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 relative z-20">
         {/* Header and Subtitle */}
         <div className="pt-16 pb-4">
           <div className="mb-3 text-left pl-0 sm:pl-6">
             <h1
-              className="text-lg md:text-xl mb-1 text-white italic"
+              className="text-lg md:text-xl mb-1 text-white italic fade-in"
               style={{
                 fontFamily: 'Editorial New',
                 letterSpacing: '-0.05em',
@@ -34,7 +34,7 @@ function Photos() {
               Photography
             </h1>
             <p
-              className="text-xs md:text-sm text-white"
+              className="text-xs md:text-sm text-white fade-in fade-in-delay-1"
               style={{
                 fontFamily: 'Neue Montreal',
                 fontWeight: 300,
@@ -50,11 +50,11 @@ function Photos() {
 
         {/* Footer */}
         <footer
-          className="border-t border-[#333] mt-16 pt-6 pb-10 text-sm md:text-base bg-[#0C0C0C]"
+          className="border-t border-[#333] mt-16 pt-6 pb-10 text-sm md:text-base bg-black fade-in fade-in-delay-5"
           style={{ color: '#4E4E4E', fontFamily: 'Neue Montreal', fontWeight: 300 }}
         >
           <div className="flex flex-row justify-between items-center w-full">
-            <img src={footerlogo} alt="Footer Logo" className="w-8 h-auto object-contain" />
+            <img src={footerlogo} alt="Footer Logo" className="w-6 h-auto object-contain" />
             <span>© 2025</span>
           </div>
         </footer>

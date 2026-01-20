@@ -120,29 +120,30 @@ function Projects() {
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Projects Content */}
         <main className="min-h-[60vh] py-16">
-          <div className="mb-12 text-left">
-            <h1
-              className="text-lg md:text-xl mb-1 text-white italic"
-              style={{
-                fontFamily: 'Editorial New',
-                letterSpacing: '-0.05em',
-                fontWeight: 400,
-              }}
-            >
-              Projects
-            </h1>
-            <p
-              className="text-xs md:text-sm text-white"
-              style={{
-                fontFamily: 'Neue Montreal',
-                fontWeight: 300,
-              }}
-            >
-              Here are some of the projects I have completed and the ones I'm currently working on. Head over to my GitHub to see the other projects I worked on and their source code.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="max-w-5xl">
+            <div className="mb-12 text-left">
+              <h1
+                className="text-lg md:text-xl mb-1 text-white italic"
+                style={{
+                  fontFamily: 'Editorial New',
+                  letterSpacing: '-0.05em',
+                  fontWeight: 400,
+                }}
+              >
+                Projects
+              </h1>
+              <p
+                className="text-xs md:text-sm text-white"
+                style={{
+                  fontFamily: 'Neue Montreal',
+                  fontWeight: 300,
+                }}
+              >
+                Here are some of the projects I have completed and the ones I'm currently working on. Head over to my GitHub to see the other projects I worked on and their source code.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <div
                 key={index}
@@ -204,6 +205,7 @@ function Projects() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </main>
 

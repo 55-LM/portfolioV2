@@ -64,7 +64,7 @@ export default function Gallery() {
             default: 4,
             1280: 4,
             1024: 3,
-            640: 2,
+            640: 1,
             0: 1,
           }}
           className="my-masonry-grid p-0 sm:p-6"

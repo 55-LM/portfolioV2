@@ -161,6 +161,9 @@ export default function Gallery() {
             const delayMap = ['fade-in-delay-2', 'fade-in-delay-2', 'fade-in-delay-3', 'fade-in-delay-3', 'fade-in-delay-4', 'fade-in-delay-4', 'fade-in-delay-5', 'fade-in-delay-5'];
             const delayClass = delayMap[i % delayMap.length] || 'fade-in-delay-5';
             
+            // First 4 images load immediately (visible on screen), rest are lazy loaded
+            const isAboveFold = i < 4;
+            
             return (
               <div
                 key={i}
@@ -176,6 +179,9 @@ export default function Gallery() {
                       onLoad={handleLoad}
                       onClick={handleClick}
                       tabIndex={-1}
+                      loading={isAboveFold ? "eager" : "lazy"}
+                      decoding="async"
+                      fetchPriority={isAboveFold ? "high" : "auto"}
                       className="block h-auto object-cover relative z-10"
                     />
                   </div>

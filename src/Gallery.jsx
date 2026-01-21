@@ -58,7 +58,7 @@ export default function Gallery() {
 
   return (
     <>
-      <div className="overflow-visible pb-20 sm:pb-12 w-full max-w-full relative z-20" style={{ overflow: 'visible' }}>
+      <div className="overflow-visible pb-20 sm:pb-12 w-full max-w-full relative" style={{ overflow: 'visible', zIndex: 20, position: 'relative' }}>
         <Masonry
           breakpointCols={{
             default: 4,
@@ -170,9 +170,10 @@ export default function Gallery() {
                 className={`inline-block w-full mb-6 break-inside-avoid group cursor-pointer overflow-visible fade-in ${delayClass}`}
                 onMouseEnter={!isTouchDevice ? handleShowGlow : undefined}
                 onMouseLeave={!isTouchDevice ? handleHideGlow : undefined}
+                style={{ position: 'relative', zIndex: 10, isolation: 'isolate' }}
               >
-                <div className="relative w-full overflow-visible">
-                  <div className="relative inline-block">
+                <div className="relative w-full overflow-visible" style={{ zIndex: 10, position: 'relative' }}>
+                  <div className="relative inline-block" style={{ zIndex: 10, position: 'relative' }}>
                     <img
                       src={mod.default}
                       alt={`Photo ${i}`}
@@ -182,7 +183,8 @@ export default function Gallery() {
                       loading={isAboveFold ? "eager" : "lazy"}
                       decoding="async"
                       fetchPriority={isAboveFold ? "high" : "auto"}
-                      className="block h-auto object-cover relative z-10"
+                      className="block h-auto object-cover"
+                      style={{ zIndex: 10, position: 'relative', display: 'block', pointerEvents: 'auto' }}
                     />
                   </div>
                 </div>
@@ -214,7 +216,7 @@ export default function Gallery() {
         </div>
       )}
 
-      <GlowPortal {...glowPortal} zIndex={1} />
+      <GlowPortal {...glowPortal} zIndex={0} />
     </>
   );
 }

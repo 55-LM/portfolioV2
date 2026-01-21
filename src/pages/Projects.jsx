@@ -139,9 +139,9 @@ function Projects() {
         {/* Projects Content */}
         <main className="min-h-[60vh] py-16">
           <div className="max-w-5xl mx-auto">
-            <div className="mb-12 text-left">
+            <div className="mb-6 text-left">
               <h1
-                className="text-lg md:text-xl mb-1 text-white italic fade-in"
+                className="text-xl md:text-2xl mb-1 text-white italic fade-in"
                 style={{
                   fontFamily: 'Editorial New',
                   letterSpacing: '-0.05em',
@@ -151,7 +151,7 @@ function Projects() {
                 Projects
               </h1>
               <p
-                className="text-xs md:text-sm text-white fade-in fade-in-delay-1"
+                className="text-sm md:text-base text-white fade-in fade-in-delay-1"
                 style={{
                   fontFamily: 'Neue Montreal',
                   fontWeight: 300,
@@ -201,7 +201,7 @@ function Projects() {
                     rel="noopener noreferrer" 
                     className="hover:opacity-70 transition-opacity ml-2"
                   >
-                    <img src={redirectIcon} alt="Redirect" className="w-4 h-4 object-contain" />
+                    <img src={redirectIcon} alt="Redirect" className="w-4 h-4 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(63%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
                   </a>
                 </div>
                 <div className="mt-2">
@@ -218,7 +218,7 @@ function Projects() {
                       style={{
                         fontFamily: 'Neue Montreal',
                         fontWeight: 300,
-                        color: '#828282',
+                        color: '#a0a0a0',
                         lineHeight: '1.3',
                         display: '-webkit-box',
                         WebkitLineClamp: expandedDescriptions[index] ? '999' : '3',
@@ -235,7 +235,7 @@ function Projects() {
                       style={{
                         fontFamily: 'Neue Montreal',
                         fontWeight: 300,
-                        color: '#828282',
+                        color: '#a0a0a0',
                         fontSize: '0.7rem',
                         cursor: 'pointer',
                       }}
@@ -252,7 +252,7 @@ function Projects() {
                       style={{
                         fontFamily: 'Neue Montreal',
                         fontWeight: 300,
-                        color: '#828282',
+                        color: '#a0a0a0',
                         backgroundColor: 'rgba(37, 37, 37, 0.3)',
                         border: '1px solid rgba(58, 58, 58, 0.3)',
                         borderRadius: '4px',

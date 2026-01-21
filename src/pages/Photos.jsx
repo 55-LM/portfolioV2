@@ -23,9 +23,9 @@ function Photos() {
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 relative z-20">
         {/* Photography Content */}
         <main className="pt-16">
-          <div className="mb-6 text-left pl-0 sm:pl-6">
+          <div className="mb-4 text-left pl-0 sm:pl-6">
               <h1
-                className="text-lg md:text-xl mb-1 text-white italic fade-in"
+                className="text-xl md:text-2xl mb-1 text-white italic fade-in"
                 style={{
                   fontFamily: 'Editorial New',
                   letterSpacing: '-0.05em',
@@ -35,7 +35,7 @@ function Photos() {
                 Photography
               </h1>
               <p
-                className="text-xs md:text-sm text-white fade-in fade-in-delay-1"
+                className="text-sm md:text-base text-white fade-in fade-in-delay-1"
                 style={{
                   fontFamily: 'Neue Montreal',
                   fontWeight: 300,

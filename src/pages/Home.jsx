@@ -12,7 +12,7 @@ function Home() {
         <main className="flex-1 flex flex-col justify-center items-center px-4 py-16">
           <div className="max-w-xl w-full">
             <div 
-              className="text-left space-y-4 text-sm md:text-base"
+              className="text-left space-y-4 text-base md:text-lg"
               style={{
                 fontFamily: 'Neue Montreal',
                 fontWeight: 300,
@@ -21,20 +21,20 @@ function Home() {
             >
               <div className="flex items-center justify-between fade-in">
                 <p className="m-0">
-                  Hi, I'm   <span className="highlight-text italic editorial-text" style={{ fontFamily: 'Editorial New' }}> Alvi</span>
+                  Hi, I'm&nbsp;<span className="highlight-text italic editorial-text" style={{ fontFamily: 'Editorial New' }}>Alvi</span>
                 </p>
                 <div className="flex items-center gap-4 ml-4" style={{ transform: 'translateY(-4px)' }}>
                   <a href="https://www.linkedin.com/in/alvia22" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-1">
-                    <img src={linkedinIcon} alt="LinkedIn" className="object-contain" style={{ width: '24px', height: '24px' }} />
+                    <img src={linkedinIcon} alt="LinkedIn" className="object-contain" style={{ width: '26px', height: '26px', filter: 'brightness(0) saturate(100%) invert(63%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
                   </a>
                   <a href="https://github.com/55-LM" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-2">
-                    <img src={githubIcon} alt="GitHub" className="object-contain" style={{ width: '24px', height: '24px' }} />
+                    <img src={githubIcon} alt="GitHub" className="object-contain" style={{ width: '26px', height: '26px', filter: 'brightness(0) saturate(100%) invert(63%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
                   </a>
                   <a href="mailto:alvi.alam@torontomu.ca" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-3" title="alvi.alam@torontomu.ca">
-                    <img src={mailIcon} alt="Email" className="object-contain" style={{ width: '24px', height: '24px' }} />
+                    <img src={mailIcon} alt="Email" className="object-contain" style={{ width: '26px', height: '26px', filter: 'brightness(0) saturate(100%) invert(63%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
                   </a>
                   <a href="https://github.com/55-LM/portfolioV2" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-4">
-                    <img src={codeIcon} alt="Code" className="object-contain" style={{ width: '24px', height: '24px' }} />
+                    <img src={codeIcon} alt="Code" className="object-contain" style={{ width: '26px', height: '26px', filter: 'brightness(0) saturate(100%) invert(63%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)' }} />
                   </a>
                 </div>
               </div>
@@ -42,10 +42,10 @@ function Home() {
                 I am currently a computer engineering student at <a href="https://www.torontomu.ca/" target="_blank" rel="noopener noreferrer" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>Toronto Metropolitan University</a>
               </p>
               <p className="fade-in fade-in-delay-3">
-                I enjoy taking on <Link to="/projects" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>projects</Link> with versatile requirements especially those that bring my ideas to life. I enjoy every part of the process from conception to design and implementation.
+                I enjoy taking on multidisciplinary <Link to="/projects" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>projects</Link>, especially ones that combine electronics, software, and design, because I like building systems where all the pieces work together. I enjoy the full process from concept to design to implementation.
               </p>
               <p className="fade-in fade-in-delay-4">
-                I dedicate my spare time to hone my <Link to="/photos" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>photography</Link> or travel and explore different parts of the world.
+                I spend my free time honing my <Link to="/photos" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>photography</Link> and exploring new creative techniques. I also enjoy traveling, discovering new places, and spending time outdoors.
               </p>
             </div>
           </div>

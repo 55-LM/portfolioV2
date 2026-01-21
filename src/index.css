@@ -300,7 +300,7 @@ html, body {
 
 /* Editorial New font specific styling - tighter spacing and bolder */
 .editorial-text {
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
   -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.5);
   text-stroke: 0.3px rgba(255, 255, 255, 0.5);
   font-weight: 500;

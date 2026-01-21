@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import GlowPortal from './GlowPortal';
 import Masonry from 'react-masonry-css';
@@ -10,7 +10,6 @@ export default function Gallery() {
 
   const [lightboxSrc, setLightboxSrc] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [tappedIndex, setTappedIndex] = useState(null);
   const isTouchDevice = typeof window !== 'undefined' && 'ontouchstart' in window;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 640;
   const bleed = isMobile ? 1 : 2;
@@ -132,21 +131,10 @@ export default function Gallery() {
             const handleClick = (e) => {
               e.preventDefault();
               e.stopPropagation();
-              if (isTouchDevice) {
-                if (tappedIndex === i) {
-                  handleOpenLightbox(e.target.src);
-                  setTappedIndex(null);
-                } else {
-                  setTappedIndex(i);
-                  return false;
-                }
-              } else {
-                handleOpenLightbox(e.target.src);
-              }
+              handleOpenLightbox(e.target.src);
               return false;
             };
 
-            const showGlow = isTouchDevice ? tappedIndex === i : false;
             const handleShowGlow = (e) => {
               if (!glowDataUrl) return;
               const rect = e.target.getBoundingClientRect();
@@ -179,8 +167,6 @@ export default function Gallery() {
                 className={`inline-block w-full mb-6 break-inside-avoid group cursor-pointer overflow-visible fade-in ${delayClass}`}
                 onMouseEnter={!isTouchDevice ? handleShowGlow : undefined}
                 onMouseLeave={!isTouchDevice ? handleHideGlow : undefined}
-                onTouchStart={isTouchDevice ? (e) => { handleShowGlow(e); handleClick(e); } : undefined}
-                onTouchEnd={isTouchDevice ? handleHideGlow : undefined}
               >
                 <div className="relative w-full overflow-visible">
                   <div className="relative inline-block">
@@ -188,7 +174,7 @@ export default function Gallery() {
                       src={mod.default}
                       alt={`Photo ${i}`}
                       onLoad={handleLoad}
-                      onClick={!isTouchDevice ? handleClick : undefined}
+                      onClick={handleClick}
                       tabIndex={-1}
                       className="block h-auto object-cover relative z-10"
                     />
@@ -201,24 +187,22 @@ export default function Gallery() {
       </div>
 
       {lightboxSrc && (
-        <div className="lightbox-open fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 pt-16">
-          <button
-            onClick={handleClose}
-            className="absolute top-6 right-6 text-4xl font-light bg-gradient-to-b from-[#AFAFAF] to-[#606060] bg-clip-text text-transparent z-20"
-          >
-            ×
-          </button>
-
+        <div 
+          className="lightbox-open fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 cursor-pointer"
+          onClick={handleClose}
+        >
           <div
             className={clsx(
-              'relative z-10 transform transition-all duration-300 ease-out',
+              'relative z-10 transform transition-all duration-300 ease-out pointer-events-none',
               isAnimating ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             )}
+            onClick={(e) => e.stopPropagation()}
           >
             <img
               src={lightboxSrc}
               alt="Enlarged"
-              className="max-w-[90vw] max-h-[90vh] object-contain relative z-10"
+              className="max-w-[90vw] max-h-[90vh] object-contain relative z-10 pointer-events-auto"
+              onClick={handleClose}
             />
           </div>
         </div>

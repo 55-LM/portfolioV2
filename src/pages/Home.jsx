@@ -10,9 +10,9 @@ function Home() {
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 w-full flex-1 flex flex-col">
         {/* Main Intro Content */}
         <main className="flex-1 flex flex-col justify-center items-center px-4 py-16">
-          <div className="max-w-2xl w-full">
+          <div className="max-w-xl w-full">
             <div 
-              className="text-left space-y-4 text-lg md:text-xl"
+              className="text-left space-y-4 text-sm md:text-base"
               style={{
                 fontFamily: 'Neue Montreal',
                 fontWeight: 300,
@@ -24,17 +24,17 @@ function Home() {
                   Hi, I'm   <span className="highlight-text italic editorial-text" style={{ fontFamily: 'Editorial New' }}> Alvi</span>
                 </p>
                 <div className="flex items-center gap-4 ml-4" style={{ transform: 'translateY(-4px)' }}>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-1">
-                    <img src={linkedinIcon} alt="LinkedIn" className="w-7 h-7 object-contain" />
+                  <a href="https://www.linkedin.com/in/alvia22" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-1">
+                    <img src={linkedinIcon} alt="LinkedIn" className="object-contain" style={{ width: '24px', height: '24px' }} />
                   </a>
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-2">
-                    <img src={githubIcon} alt="GitHub" className="w-7 h-7 object-contain" />
+                  <a href="https://github.com/55-LM" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-2">
+                    <img src={githubIcon} alt="GitHub" className="object-contain" style={{ width: '24px', height: '24px' }} />
                   </a>
-                  <a href="mailto:" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-3">
-                    <img src={mailIcon} alt="Email" className="w-7 h-7 object-contain" />
+                  <a href="mailto:alvi.alam@torontomu.ca" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-3" title="alvi.alam@torontomu.ca">
+                    <img src={mailIcon} alt="Email" className="object-contain" style={{ width: '24px', height: '24px' }} />
                   </a>
-                  <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-4">
-                    <img src={codeIcon} alt="Code" className="w-7 h-7 object-contain" />
+                  <a href="https://github.com/55-LM/portfolioV2" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity fade-in fade-in-delay-4">
+                    <img src={codeIcon} alt="Code" className="object-contain" style={{ width: '24px', height: '24px' }} />
                   </a>
                 </div>
               </div>

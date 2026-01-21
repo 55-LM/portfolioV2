@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import GlowPortal from '../GlowPortal';
 import footerlogo from '../assets/footerlogo.png';
 import redirectIcon from '../assets/redirect.png';
@@ -14,14 +15,30 @@ function Projects() {
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 640;
   const bleed = isMobile ? 2 : 4;
   const [glowPortal, setGlowPortal] = useState({ show: false, src: null, left: 0, top: 0, width: 0, height: 0, opacity: 0.5 });
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
+  
+  const toggleDescription = (index) => {
+    // Force a reflow to ensure the transition starts
+    requestAnimationFrame(() => {
+      setExpandedDescriptions(prev => ({
+        ...prev,
+        [index]: !prev[index]
+      }));
+    });
+  };
+  
+  const getTruncatedDescription = (description, maxLength = 150) => {
+    if (description.length <= maxLength) return description;
+    return description.substring(0, maxLength) + '...';
+  };
 
   const projects = [
-    { name: 'Hidayah', image: hidayah, description: 'A comprehensive web application designed to provide users with an intuitive interface for managing and organizing their daily tasks and activities. Built with modern technologies to ensure scalability and performance.', techStack: ['ESP32', 'C/C++', 'AutoCAD', 'Fusion360'] },
-    { name: 'Mono', image: mono, description: 'A minimalist design system and component library focused on creating clean, efficient user interfaces. Features a cohesive design language that promotes consistency across different platforms and applications.', techStack: ['TypeScript', 'React', 'CSS'] },
-    { name: 'SecondSight', image: braille, description: 'An accessibility-focused application that helps convert text to braille format, making digital content more accessible to visually impaired users. Includes real-time conversion and multiple braille standards support.', techStack: ['Python', 'Flask', 'JavaScript'] },
-    { name: 'Metropolitan Engineering Competition', image: mec, description: 'A full-stack e-commerce platform with advanced features including inventory management, payment processing, and order tracking. Designed to handle high traffic volumes and provide a seamless shopping experience.', techStack: ['React', 'Express', 'PostgreSQL'] },
-    { name: 'Escanor', image: escanor, description: 'A powerful data analysis and visualization tool that helps businesses make informed decisions through comprehensive reporting and interactive dashboards. Supports multiple data sources and export formats.', techStack: ['Python', 'D3.js', 'SQL'] },
-    { name: 'Powerplex', image: powerplex, description: 'An enterprise-level project management solution that streamlines workflow, enhances team collaboration, and provides detailed analytics. Features include task assignment, progress tracking, and resource allocation.', techStack: ['Vue.js', 'Django', 'MySQL'] },
+    { name: 'Hidayah', image: hidayah, description: 'A cube-shaped smart speaker that plays the Adhan at the five daily prayer times and uses four diffused 8×8 RGB LED matrices to show a reverse-hourglass countdown as the next prayer approaches. The device supports Qur\'an playback using the wake phrase followed by the surah name, and displays an audio-reactive LED visualizer during recitation. Hardware integrates an ESP32-S3, ICS-43434 I²S MEMS microphone, MAX98357A I²S class-D amplifier, an 8-ohm speaker, WS2812B addressable LED matrices, and microSD storage for offline audio. The enclosure and internal layout were designed using AutoCAD, with plans to design a PCB for effeciency.', techStack: ['ESP32', 'Arduino IDE', 'C/C++', 'FreeRTOS', 'FastLED', 'I²S', 'SPI', 'AutoCAD', 'Fusion 360'], githubUrl: 'https://github.com/55-LM/Hidayah' },
+    { name: 'Mono', image: mono, description: 'A minimalist digital detox companion that encourages intentional screen time through a Tamagotchi-style interface navigated with three push buttons. The device features UI on a 240×240 TFT display, GPS-based navigation with a compass arrow, a pomodoro timer, a step counter, and audio input for simple sound-reactive interactions. Hardware integrates an ESP32 Feather V2 with an ST7789 TFT, PA1616S GPS module, QMC5883L magnetometer, ADXL345 triple-axis accelerometer, SPH0645 I²S MEMS microphone, a mini 8-ohm speaker and a 3.7V 2500mAh LiPo battery. Currently designing a custom enclosure in AutoCAD and a compact PCB in KiCad to reduce size and improve integration.', techStack: ['ESP32', 'Arduino IDE', 'C/C++', 'FreeRTOS', 'SPI', 'I²C', 'UART', 'I²S', 'Adafruit GFX', 'Fusion 360', 'AutoCAD', 'KiCAD'], githubUrl: 'https://github.com/55-LM/MONO' },
+    { name: 'SecondSight', image: braille, description: 'A laptop-to-hardware Text-to-Braille reader that converts typed input into 6-dot Braille using an Arduino Uno and a solenoid-based Braille cell array. A Python script streams characters over UART serial to the Arduino firmware, which maps each letter to its Braille pattern and actuates push-pull solenoids through N-channel MOSFET drivers with flyback diodes for switching. Designed and 3D-printed an enclosure using AutoCAD to package the electronics and align the Braille cell mechanism for output.', techStack: ['Arduino Uno', 'Arduino IDE', 'C/C++', 'Python', 'UART', 'AutoCAD'], githubUrl: 'https://github.com/55-LM/Text-to-Braille-Reader' },
+    { name: 'Metropolitan Engineering Competition', image: mec, description: 'Web development and design for Toronto Metropolitan University\'s annual engineering competition that showcases nine event categories, sponsors, organizers and a new 20th anniversary theme. The front end is built with React, TypeScript, and styled-components designed in Figma. Helped build a full-stack backend tool dashboard for participant requirments distribution and inquiries.', techStack: ['React', 'TypeScript', 'Figma', 'Vercel'], githubUrl: 'https://github.com/55-LM/MEC2025' },
+    { name: 'Escanor', image: escanor, description: 'A web app that helps photographers find high-quality photo spots by visualizing real-time sun position and scene lighting on an interactive 3D Mapbox map. Users can search anywhere, click a location, and scrub date/time to see realistic sunlight direction, shadows, and atmospheric conditions. The app also scores locations by how well they\'re lit and renders them as glowing dots with brighter yellow for better light, and dim/grey for worse. The interface includes a sidebar for controls and readouts, and the project is built with Next.js, React and TypeScript using Mapbox GL JS for rendering and styling.', techStack: ['Next.js', 'TypeScript', 'Mapbox GL JS', 'SunCalc', 'OpenStreetMap', 'Open-Meteo API', 'Tailwind CSS'], githubUrl: 'https://github.com/55-LM/escanor' },
+    { name: 'Powerplex', image: powerplex, description: 'An interactive web-based power grid visualization and forecasting platform focused on Bangladesh\'s national electricity system. The application predicts power generation growth and supply–demand adequacy over a 15-year horizon using historical energy data and time-series forecasting models, and renders the progression as an animated geospatial heatmap. The platform integrates a FastAPI backend for data ingestion, forecasting, and scenario simulation with a Next.js and TypeScript frontend using Mapbox GL JS for map rendering. A PostGIS database stores spatial and temporal grid data, enabling users to explore how new clean energy infrastructure impacts regional reliability, deficits, and surplus across the country.', techStack: ['Next.js', 'TypeScript', 'Mapbox GL JS', 'Python', 'PostgreSQL'], githubUrl: 'https://github.com/55-LM/PowerPlex' },
   ];
 
   const handleLoad = (e, projectIndex) => {
@@ -144,7 +161,7 @@ function Projects() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {projects.map((project, index) => {
               const delayMap = ['fade-in-delay-2', 'fade-in-delay-3', 'fade-in-delay-4', 'fade-in-delay-5', 'fade-in-delay-5', 'fade-in-delay-5'];
               const delayClass = delayMap[Math.min(index, delayMap.length - 1)];
@@ -155,12 +172,19 @@ function Projects() {
                 onMouseEnter={!isTouchDevice ? handleShowGlow : undefined}
                 onMouseLeave={!isTouchDevice ? handleHideGlow : undefined}
               >
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-auto object-contain relative z-10"
-                  onLoad={(e) => handleLoad(e, index)}
-                />
+                <a 
+                  href={project.githubUrl || `https://github.com/${project.name.toLowerCase()}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-auto object-contain relative z-10"
+                    onLoad={(e) => handleLoad(e, index)}
+                  />
+                </a>
                 <div className="mt-3 flex items-center justify-between">
                   <p
                     className="text-left text-xs md:text-sm text-white"
@@ -172,7 +196,7 @@ function Projects() {
                     {project.name}
                   </p>
                   <a 
-                    href={`https://github.com/${project.name.toLowerCase()}`} 
+                    href={project.githubUrl || `https://github.com/${project.name.toLowerCase()}`} 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="hover:opacity-70 transition-opacity ml-2"
@@ -180,27 +204,58 @@ function Projects() {
                     <img src={redirectIcon} alt="Redirect" className="w-4 h-4 object-contain" />
                   </a>
                 </div>
-                <p
-                  className="mt-2 text-left text-xs md:text-sm"
-                  style={{
-                    fontFamily: 'Neue Montreal',
-                    fontWeight: 300,
-                    color: '#828282',
-                  }}
-                >
-                  {project.description}
-                </p>
+                <div className="mt-2">
+                  <div
+                    style={{
+                      overflow: 'hidden',
+                      maxHeight: expandedDescriptions[index] ? '2000px' : '3.9em',
+                      willChange: 'max-height',
+                      transition: 'max-height 3s ease-in-out',
+                    }}
+                  >
+                    <p
+                      className="text-left text-xs md:text-sm"
+                      style={{
+                        fontFamily: 'Neue Montreal',
+                        fontWeight: 300,
+                        color: '#828282',
+                        lineHeight: '1.3',
+                        display: '-webkit-box',
+                        WebkitLineClamp: expandedDescriptions[index] ? '999' : '3',
+                        WebkitBoxOrient: 'vertical',
+                      }}
+                    >
+                      {project.description}
+                    </p>
+                  </div>
+                  {project.description.length > 150 && (
+                    <button
+                      onClick={() => toggleDescription(index)}
+                      className="mt-2 text-left hover:opacity-70 transition-opacity"
+                      style={{
+                        fontFamily: 'Neue Montreal',
+                        fontWeight: 300,
+                        color: '#828282',
+                        fontSize: '0.7rem',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {expandedDescriptions[index] ? 'Read less' : 'Read more'}
+                    </button>
+                  )}
+                </div>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {project.techStack && project.techStack.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 rounded-full text-xs"
+                      className="px-3 py-1 text-xs"
                       style={{
                         fontFamily: 'Neue Montreal',
                         fontWeight: 300,
                         color: '#828282',
                         backgroundColor: 'rgba(37, 37, 37, 0.3)',
                         border: '1px solid rgba(58, 58, 58, 0.3)',
+                        borderRadius: '4px',
                       }}
                     >
                       {tech}
@@ -219,8 +274,10 @@ function Projects() {
           style={{ color: '#4E4E4E', fontFamily: 'Neue Montreal', fontWeight: 300 }}
         >
           <div className="flex flex-row justify-between items-center w-full">
-            <img src={footerlogo} alt="Footer Logo" className="w-6 h-auto object-contain" />
-            <span>© 2025</span>
+            <Link to="/" className="hover:opacity-70 transition-opacity">
+              <img src={footerlogo} alt="Footer Logo" className="w-6 h-auto object-contain" />
+            </Link>
+            <span className="text-xs">© 2025</span>
           </div>
         </footer>
       </div>

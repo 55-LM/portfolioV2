@@ -42,10 +42,10 @@ function Home() {
                 I am currently a computer engineering student at <a href="https://www.torontomu.ca/" target="_blank" rel="noopener noreferrer" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>Toronto Metropolitan University</a>
               </p>
               <p className="fade-in fade-in-delay-3">
-                I enjoy taking on multidisciplinary <Link to="/projects" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>projects</Link>, especially ones that combine electronics, software, and design, because I like building systems where all the pieces work together. I enjoy the full process from concept to design to implementation.
+                I love working on <Link to="/projects" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>projects</Link> that combine electronics, software, and design, building systems where all the pieces come together to bring something to life. I enjoy every step of the process, and I'm always excited to learn new tools and technologies along the way. Ultimately, I aim to create things that are useful, practical, and have a positive impact on the world around me.
               </p>
               <p className="fade-in fade-in-delay-4">
-                I spend my free time honing my <Link to="/photos" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>photography</Link> and exploring new creative techniques. I also enjoy traveling, discovering new places, and spending time outdoors.
+                I use my free time to hone my <Link to="/photos" className="highlight-text italic editorial-text cursor-pointer" style={{ fontFamily: 'Editorial New' }}>photography</Link> and explore new creative techniques. I'm also passionate about travelling, discovering new places, and spending time outdoors.
               </p>
             </div>
           </div>

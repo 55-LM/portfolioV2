@@ -18,13 +18,10 @@ function Projects() {
   const [expandedDescriptions, setExpandedDescriptions] = useState({});
   
   const toggleDescription = (index) => {
-    // Force a reflow to ensure the transition starts
-    requestAnimationFrame(() => {
-      setExpandedDescriptions(prev => ({
-        ...prev,
-        [index]: !prev[index]
-      }));
-    });
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
   };
   
   const getTruncatedDescription = (description, maxLength = 150) => {
@@ -157,7 +154,7 @@ function Projects() {
                   fontWeight: 300,
                 }}
               >
-                Here are some of the projects I have completed and the ones I'm currently working on. Head over to my GitHub to see the other projects I worked on and their source code.
+                Here are a few projects I've completed, plus some I'm currently working on. You can find more projects and the source code for them on my <a href="https://github.com/55-LM" target="_blank" rel="noopener noreferrer" className="transition-all duration-300" style={{ textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.textShadow = '0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.7)'} onMouseLeave={(e) => e.target.style.textShadow = 'none'}>GitHub</a>.
               </p>
             </div>
             
@@ -186,15 +183,21 @@ function Projects() {
                   />
                 </a>
                 <div className="mt-3 flex items-center justify-between">
-                  <p
-                    className="text-left text-xs md:text-sm text-white"
+                  <a
+                    href={project.githubUrl || `https://github.com/${project.name.toLowerCase()}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-left text-xs md:text-sm text-white transition-all duration-300"
                     style={{
                       fontFamily: 'Neue Montreal',
                       fontWeight: 300,
+                      textDecoration: 'none',
                     }}
+                    onMouseEnter={(e) => e.target.style.textShadow = '0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.7)'}
+                    onMouseLeave={(e) => e.target.style.textShadow = 'none'}
                   >
                     {project.name}
-                  </p>
+                  </a>
                   <a 
                     href={project.githubUrl || `https://github.com/${project.name.toLowerCase()}`} 
                     target="_blank" 
@@ -210,7 +213,7 @@ function Projects() {
                       overflow: 'hidden',
                       maxHeight: expandedDescriptions[index] ? '2000px' : '3.9em',
                       willChange: 'max-height',
-                      transition: 'max-height 3s ease-in-out',
+                      transition: 'max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                   >
                     <p

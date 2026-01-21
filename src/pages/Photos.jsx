@@ -41,7 +41,7 @@ function Photos() {
                   fontWeight: 300,
                 }}
               >
-                A collection of photographs I've taken while travelling and exploring using my Sony a6700
+                I purchased my first mirrorless camera, the Sony a6700, not too long ago and have been shooting away. I pair it with the Viltrox 25mm f1.7. Here are some selected stills from my travels and outings.
               </p>
           </div>
         </main>

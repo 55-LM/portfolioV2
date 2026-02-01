@@ -1,3 +1,2 @@
-# a-archives
-[https://a-archives.vercel.app/](https://a-archives.vercel.app/)
+[alvialam.com](https://www.alvialam.com/)
 
